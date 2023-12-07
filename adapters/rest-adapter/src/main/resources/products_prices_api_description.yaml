@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: Product Prices API
+  version: 1.0.0
+paths:
+  /products-prices:
+    parameters:
+      - name: productId
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: The ID of the product to retrieve prices for
+      - name: brandId
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: The ID of the brand associated with the product
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: The date for which prices are requested
+
+    get:
+      summary: Get product prices by ID, brand ID, and date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductPriceResponse'
+              example:
+                productId: 1
+                brandId: 100
+                startDate: '2023-12-04T08:00:00'
+                endDate: '2023-12-04T17:00:00'
+                price: 19.99
+                currency: EUR
+        '204':
+          description: Prices not found
+
+components:
+  schemas:
+    ProductPriceResponse:
+      type: object
+      properties:
+        productId:
+          type: integer
+        brandId:
+          type: integer
+        priceList:
+          type: integer
+        price:
+          type: number
+        currency:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
