@@ -2,7 +2,6 @@ package com.adme.products.prices;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.config.JsonPathConfig;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -13,8 +12,8 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.config.JsonConfig.jsonConfig;
 import static org.hamcrest.Matchers.*;
 
-@Disabled
-class ProductsPricesE2ETest {
+
+class ProductsPricesE2ETeest {
 
     @ParameterizedTest
     @CsvSource({
@@ -29,7 +28,7 @@ class ProductsPricesE2ETest {
             .config(RestAssured.config().jsonConfig(jsonConfig().numberReturnType(JsonPathConfig.NumberReturnType.BIG_DECIMAL)))
             .queryParam("brandId", brandId)
             .queryParam("productId", productId)
-            .queryParam("date", date)
+            .queryParam("date", date.toString())
         .when()
             .get("/products-prices")
         .then()
@@ -39,8 +38,8 @@ class ProductsPricesE2ETest {
                     "priceList", equalTo(priceList),
                     "price", comparesEqualTo(price),
                     "currency", equalTo(currency),
-                    "startDate", lessThanOrEqualTo(date), // Comparing lexicographically
-                    "endDate", greaterThanOrEqualTo(date)
+                    "startDate", lessThanOrEqualTo(date.toString()), // Comparing lexicographically
+                    "endDate", greaterThanOrEqualTo(date.toString())
             );
     }
 
