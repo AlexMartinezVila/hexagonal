@@ -1,3 +1,8 @@
+### How to run the application
+
+You need to build the app executing from e.g. bash terminal from root folder `./mvnw clean install`
+You can start the spring boot application executing from application folder `../mvnw spring-boot:run`
+
 ### Java Spring template project
 
 This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
