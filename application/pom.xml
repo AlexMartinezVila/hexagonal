@@ -35,4 +35,32 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Dockerize -->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${jib-maven-plugin.version}</version>
+                <configuration>
+                    <container>
+                        <mainClass>com.adme.products.prices.Application</mainClass>
+                    </container>
+                    <from>
+                        <image>
+                            amazoncorretto:21-alpine@sha256:e937a2668732ad0e138180f40e26586b4ba39282271889466ce6693410b77f2c
+                        </image>
+                    </from>
+                    <to>
+                        <image>alexmartinezvila/products-prices:${project.version}</image>
+                    </to>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
