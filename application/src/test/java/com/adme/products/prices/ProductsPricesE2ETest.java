@@ -2,8 +2,11 @@ package com.adme.products.prices;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.config.JsonPathConfig;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,8 +15,11 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.config.JsonConfig.jsonConfig;
 import static org.hamcrest.Matchers.*;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class ProductsPricesE2ETest {
 
-class ProductsPricesE2ETeest {
+    @LocalServerPort
+    int port;
 
     @ParameterizedTest
     @CsvSource({
@@ -30,7 +36,7 @@ class ProductsPricesE2ETeest {
             .queryParam("productId", productId)
             .queryParam("date", date.toString())
         .when()
-            .get("/products-prices")
+            .get("http://localhost:" + port + "/products-prices")
         .then()
             .statusCode(200).assertThat()
             .body("productId", equalTo(productId),
