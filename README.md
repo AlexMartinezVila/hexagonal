@@ -1,7 +1,8 @@
 ## Requirements
 
 Project contains a maven wrapper, so there is no need for a maven installation.
-It only requires java to be installed. Source code has been developed on java 20.
+It only requires java to be installed. Source code has been developed on java 21.
+Application can be packed as a Docker Image without the need of a Docker installation. It's packed using maven JIB plugin.   
 
 ## How to build and run the application
 
