@@ -100,7 +100,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <!-- Coverage merging Unit Tests and Integration Tests reports -->
+            <!-- Coverage merging Unit Tests and Integration Tests reports. Each submodule will have its own, them are not unified into a single one yet. -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
