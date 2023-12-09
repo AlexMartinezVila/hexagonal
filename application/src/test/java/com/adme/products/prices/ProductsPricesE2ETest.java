@@ -2,7 +2,6 @@ package com.adme.products.prices;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.config.JsonPathConfig;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +31,7 @@ class ProductsPricesE2ETest {
     void given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse(Integer brandId, Integer productId, LocalDateTime date, Integer priceList, BigDecimal price, String currency) {
         given()
             .config(RestAssured.config().jsonConfig(jsonConfig().numberReturnType(JsonPathConfig.NumberReturnType.BIG_DECIMAL)))
+            .auth().basic("user", "pass")
             .queryParam("brandId", brandId)
             .queryParam("productId", productId)
             .queryParam("date", date.toString())

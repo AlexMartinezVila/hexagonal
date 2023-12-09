@@ -1,4 +1,4 @@
-package com.adme.products.prices.rest.config;
+package com.adme.products.prices.rest.common;
 
 import org.springframework.http.HttpStatus;
 

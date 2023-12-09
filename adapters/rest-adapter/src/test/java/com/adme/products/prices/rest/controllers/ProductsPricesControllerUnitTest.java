@@ -9,6 +9,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
@@ -22,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProductsPricesController.class)
+@WithMockUser
 class ProductsPricesControllerUnitTest {
 
     @Autowired
@@ -99,6 +102,20 @@ class ProductsPricesControllerUnitTest {
                         .queryParam("date", date.toString()))
                 .andExpect(status().is5xxServerError())
                 .andExpect(content().string(Matchers.containsString("Testing Exception")));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1,35455,2020-06-14T10:00:00"
+    })
+    @WithAnonymousUser
+    void given_QueryParams_When_WrongCredentials_Then_UnauthorizedResponse(Integer brandId, Integer productId, LocalDateTime date) throws Exception {
+
+        this.mockMvc.perform(get("/products-prices")
+                        .queryParam("brandId", brandId.toString())
+                        .queryParam("productId", productId.toString())
+                        .queryParam("date", date.toString()))
+                .andExpect(status().isUnauthorized());
     }
 
 }

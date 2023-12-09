@@ -1,4 +1,4 @@
-package com.adme.products.prices.rest.config;
+package com.adme.products.prices.rest.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
