@@ -1,7 +1,7 @@
 package com.adme.products.prices.rest.controllers;
 
 import com.adme.products.prices.domain.models.ProductPrice;
-import com.adme.products.prices.domain.ports.ProductsPricesPersistence;
+import com.adme.products.prices.domain.ports.ProductsPricesService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,7 +30,7 @@ class ProductsPricesControllerUnitTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private ProductsPricesPersistence productsPricesPersistence;
+    private ProductsPricesService productsPricesService;
 
     @ParameterizedTest
     @CsvSource({
@@ -48,7 +48,7 @@ class ProductsPricesControllerUnitTest {
                 .endDate(endDate)
                 .build();
 
-        when(productsPricesPersistence.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.of(productPrice));
+        when(productsPricesService.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.of(productPrice));
 
         this.mockMvc.perform(get("/products-prices")
                         .queryParam("brandId", brandId.toString())
@@ -64,7 +64,7 @@ class ProductsPricesControllerUnitTest {
     })
     void given_QueryParams_When_CallingProductsPricesThatNotExists_Then_NoContentResponse(Integer brandId, Integer productId, LocalDateTime date) throws Exception {
 
-        Mockito.when(productsPricesPersistence.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.empty());
+        Mockito.when(productsPricesService.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.empty());
 
         this.mockMvc.perform(get("/products-prices")
                         .queryParam("brandId", brandId.toString())
@@ -79,7 +79,7 @@ class ProductsPricesControllerUnitTest {
     })
     void given_QueryParams_When_CallingProductsPricesWrongQueryParams_Then_BadRequestResponse(String brandId, Integer productId, LocalDateTime date) throws Exception {
 
-        Mockito.when(productsPricesPersistence.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.empty());
+        Mockito.when(productsPricesService.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(Optional.empty());
 
         this.mockMvc.perform(get("/products-prices")
                         .queryParam("brandId", brandId.toString())
@@ -94,7 +94,7 @@ class ProductsPricesControllerUnitTest {
     })
     void given_QueryParams_When_ServerThrowsException_Then_InternalServerErrorResponse(Integer brandId, Integer productId, LocalDateTime date) throws Exception {
 
-        Mockito.when(productsPricesPersistence.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenThrow(new RuntimeException("Testing Exception"));
+        Mockito.when(productsPricesService.findProductPrice(Mockito.any(), Mockito.any(), Mockito.any())).thenThrow(new RuntimeException("Testing Exception"));
 
         this.mockMvc.perform(get("/products-prices")
                         .queryParam("brandId", brandId.toString())

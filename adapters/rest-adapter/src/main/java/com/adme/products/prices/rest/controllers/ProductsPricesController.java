@@ -1,6 +1,6 @@
 package com.adme.products.prices.rest.controllers;
 
-import com.adme.products.prices.domain.ports.ProductsPricesPersistence;
+import com.adme.products.prices.domain.ports.ProductsPricesService;
 import com.adme.products.prices.rest.mappers.PricesMapper;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.api.ProductsPricesApi;
@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 class ProductsPricesController implements ProductsPricesApi {
 
-    private final ProductsPricesPersistence productsPricesPersistence;
+    private final ProductsPricesService productPricesService;
 
     private static final PricesMapper pricesMapper = PricesMapper.INSTANCE;
 
     @Override
     public ResponseEntity<ProductPriceResponse> productsPricesGet(Integer productId, Integer brandId, LocalDateTime date) {
-        return productsPricesPersistence.findProductPrice(productId, brandId, date)
+        return productPricesService.findProductPrice(productId, brandId, date)
                 .map(pricesMapper::toProductPriceResponse)
                 .map(productPriceResponse -> ResponseEntity.ok().body(productPriceResponse))
                 .orElseGet(() -> ResponseEntity.noContent().build());

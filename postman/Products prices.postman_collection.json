@@ -1,18 +1,47 @@
 {
 	"info": {
-		"_postman_id": "a336ac3f-90ee-4aa1-9c0c-4f32827aac49",
+		"_postman_id": "00c9ed18-f171-41d3-b184-5efda8b77c3a",
 		"name": "Products prices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "493911"
 	},
 	"item": [
 		{
-			"name": "products-prices",
+			"name": "products-prices (Case 1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.priceList).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-15T15:00:00",
+					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-14T10:00:00",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -32,12 +61,489 @@
 						},
 						{
 							"key": "date",
-							"value": "2020-06-15T15:00:00"
+							"value": "2020-06-14T10:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
 						}
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "products-prices (Case 2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.priceList).to.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-14T16:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-14T16:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 3)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.priceList).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-14T21:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-14T21:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 4)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.priceList).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-15T10:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-15T10:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 5)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_QueryParams_When_CallingProductsPrices_Then_ExpectedResponse\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.priceList).to.eql(4);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?brandId=1&productId=35455&date=2020-06-16T21:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-16T21:00:00"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 6)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_WrongQueryParams_When_CallingProductsPrices_Then_BadRequestResponse\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?brandId=1A&productId=35455&date=2020-06-16T21:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1A"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-16T21:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 7)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_MissingRequiredQueryParams_When_CallingProductsPrices_Then_BadRequestResponse\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"    pm.expect(pm.response.text()).to.include(\"Required parameter 'brandId' is not present.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices?productId=35455&date=2020-06-16T21:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "date",
+							"value": "2020-06-16T21:00:00"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products-prices (Case 8)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"given_NoCredentials_When_CallingProductsPrices_Then_UnauthorizedResponse\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products-prices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products-prices"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "password",
+			"value": "pass",
+			"type": "string"
 		}
 	]
 }
